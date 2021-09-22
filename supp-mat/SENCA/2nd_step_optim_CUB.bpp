@@ -1,7 +1,7 @@
 alphabet=Codon(letter=DNA)
 genetic_code=Standard
 
-input.data1=alignment(file=escherichia_concatenat_1.fasta, remove_stop_codons=yes, sites_to_use = all, selection=62237)
+input.data1=alignment(file=escherichia_concatenat_1.fasta, remove_stop_codons=yes, sites_to_use = all)
 
 input.tree1=user(file= escherichia_concatenat_1_ml.dnd_1)
 
