@@ -2,21 +2,21 @@ alphabet=Codon(letter=DNA)
 genetic_code=Standard
 
 ### Tree used for simulation
-input.tree.file=tree.dnd
+input.tree1=user(file=tree.dnd, format=Newick)
 
-### length of sequences
 
-number_of_sites = 2000
+### Subtitution rate distribution
+
+rate_distribution1 = Constant()
 
 ### Description of the modeling 
-nonhomogeneous = general
-nonhomogeneous.number_of_models = 1
 
 model1 = YN98(kappa=2, omega=0.05, frequencies=F1X4(123_Full.theta=$(THETA_EQ), 123_Full.theta1=0.5, 123_Full.theta2=0.5))
-model1.nodes_id=0:9
 
-nonhomogeneous.root_freq=F1X4(123_Full.theta=$(THETA_ROOT), 123_Full.theta1=0.5, 123_Full.theta2=0.5)
+root_freq1=F1X4(123_Full.theta=$(THETA_ROOT), 123_Full.theta1=0.5, 123_Full.theta2=0.5)
+
+process1=Homogeneous(model=1, rate=1, tree=1, root_freq=1)
 
 
 ### output
-output.sequence.file = simul_seq.fa
+simul1=Single(process=1, output.sequence.file = simul_seq.fa, output.sequence.format = Fasta, number_of_sites = 2000)
