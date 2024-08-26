@@ -1,4 +1,4 @@
-# Uncrustify 0.55
+# Uncrustify 0.72
 
 #
 # General options
@@ -91,25 +91,25 @@ indent_var_def_blk                       = 0        # number
 
 # True:  indent continued function call parameters one indent level
 # False: align parameters under the open paren
-indent_func_call_param                   = false    # false/true
+indent_func_call_param                   = true    # false/true
 
 # Same as indent_func_call_param, but for function defs
-indent_func_def_param                    = false    # false/true
+indent_func_def_param                    = true    # false/true
 
 # Same as indent_func_call_param, but for function protos
-indent_func_proto_param                  = false    # false/true
+indent_func_proto_param                  = true    # false/true
 
 # Same as indent_func_call_param, but for class declarations
-indent_func_class_param                  = false    # false/true
+indent_func_class_param                  = true    # false/true
 
 # Same as indent_func_call_param, but for class variable constructors
-indent_func_ctor_var_param               = false    # false/true
+indent_func_ctor_var_param               = true    # false/true
 
 # Same as indent_func_call_param, but for templates
 indent_template_param                    = false    # false/true
 
 # Double the indent for indent_func_xxx_param options
-indent_func_param_double                 = false    # false/true
+indent_func_param_double                 = true    # false/true
 
 # Indentation column for standalone 'const' function decl/proto qualifier
 indent_func_const                        = 0        # number
@@ -270,13 +270,13 @@ sp_after_type                            = force    # ignore/add/remove/force
 
 # Add or remove space in 'template <' vs 'template<'.
 # If set to ignore, sp_before_angle is used.
-sp_template_angle                        = ignore   # ignore/add/remove/force
+sp_template_angle                        = remove   # ignore/add/remove/force
 
 # Add or remove space before '<>'
-sp_before_angle                          =remove   # ignore/add/remove/force
+sp_before_angle                          = remove   # ignore/add/remove/force
 
 # Add or remove space inside '<' and '>'
-sp_inside_angle                          = ignore   # ignore/add/remove/force
+sp_inside_angle                          = remove   # ignore/add/remove/force
 
 # Add or remove space after '<>'
 sp_after_angle                           = add   # ignore/add/remove/force
@@ -286,6 +286,10 @@ sp_angle_paren                           = remove   # ignore/add/remove/force
 
 # Add or remove space between '<>' and a word as in 'List<byte> m;'
 sp_angle_word                            = add   # ignore/add/remove/force
+
+# Add or remove space between '>' and '>' in '>>' (template stuff C++/C# only). Default=Add
+sp_angle_shift                           = remove     # ignore/add/remove/force
+sp_permit_cpp11_shift                    = true
 
 # Add or remove space before '(' of 'if', 'for', 'switch', and 'while'
 sp_before_sparen                         = add   # ignore/add/remove/force
@@ -556,7 +560,7 @@ sp_range                                 = ignore   # ignore/add/remove/force
 sp_cmt_cpp_start                         = add   # ignore/add/remove/force
 
 # Controls the spaces between #else or #endif and a trailing comment
-sp_endif_cmt                             = remove   # ignore/add/remove/force
+sp_endif_cmt                             = add   # ignore/add/remove/force
 
 #
 # Code alignment (not left column spaces/tabs)
