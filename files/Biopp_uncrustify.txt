@@ -3103,7 +3103,7 @@ cmt_sp_after_star_cont          = 0        # unsigned number
 # and last lines of the comment are the same length.
 #
 # Default: true
-cmt_multi_check_last            = true     # true/false
+cmt_multi_check_last            = false     # true/false
 
 # For multi-line comments with a '*' lead, remove leading spaces if the first
 # and last lines of the comment are the same length AND if the length is
