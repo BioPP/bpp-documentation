@@ -46,30 +46,29 @@ stochastic mapping, with some programs developed on Bio++ libraries.
 
 \section*{Programs}
 
-Bio++ libraries are fully described on the wiki site:
-
-\href{http://biopp.univ-montp2.fr/wiki/index.php/Main\_Page}{http://biopp.univ-montp2.fr/wiki/index.php/Main\_Page}
+Bio++ libraries are fully described on this
+\href{https://pbil.univ-lyon1.fr/bpp-doc/bppsuite/bppsuite.html}{Manual}.
 
 The methods presented here depend on two separate sets of programs,
-\href{http://biopp.univ-montp2.fr/wiki/index.php/BppSuite}{{\textbf{bppsuite}}
-and \href{http://biopp.univ-montp2.fr/forge/testnh}{\textbf{testnh}}.
+\href{https://github.com/BioPP/bppsuite}{\textbf{bppsuite}}
+and \href{https://github.com/BioPP/testnh}{\textbf{testnh}}.
 
 This site explains how to install all libraries and programs.
 
 
-\medskip
+%% \medskip
 
-Stand alone binaries for this tutorial are available there:\\
-\url{http://pbil.univ-lyon1.fr/members/gueguen/lib/dNdS/binaries/}.
+%% Stand alone binaries for this tutorial are available there:\\
+%% \url{http://pbil.univ-lyon1.fr/members/gueguen/lib/dNdS/binaries/}.
 
 \medskip
 
 All programs share the same syntax and options. In the next examples,
 minimum configuration files are provided, but all options of the
 programs are described in the
-\href{http://biopp.univ-montp2.fr/manual/html/bppsuite/2.2.0/}{bppsuite
+\href{https://pbil.univ-lyon1.fr/bpp-doc/bppsuite/bppsuite.html/}{bppsuite
   manual} and in the
-\href{http://biopp.univ-montp2.fr/manual/html/testnh/v1.1.0/}{testnh
+\href{https://pbil.univ-lyon1.fr/bpp-doc/testnh/testnh.html/}{testnh
   manual}.
 
 
@@ -93,7 +92,7 @@ numbered from 0 to 4.
 
 The model used is the standard model of Yang \& Nielsen for codons
 (see
-\href{http://biopp.univ-montp2.fr/Documents/ClassDocumentation/bpp-phyl/html/classbpp\_1\_1YN98.html\#details}{the
+\href{https://pbil.univ-lyon1.fr/bpp-doc/bpp-phyl/html/classbpp_1_1YN98.html\#details}{the
   bio++ link} for a description of the parametrization), with F1X4
 parametrization of the codon distribution. \verb|THETA_ROOT| is the GC
 content at the root of the tree, and \verb|THETA_EQ| is the
@@ -171,6 +170,32 @@ sum(treedN$edge.length[2:6])/sum(treedS$edge.length[2:6])
 
 \end{verbatim}
 
+\subsubsubsection{Normalization}
+
+
+It is also possible to count events that a similar process could have
+done on the same history, as used for the estimates of dN \& dS. In the
+file \texttt{hom\_Map\_GC\_Norm.bpp}, the lines
+
+
+\begin{verbatim}
+  nullProcessParams = zz=1
+
+  output.counts = PerBranch(prefix=$(RESULT_DIR)/counts_, splitNorm=true)
+\end{verbatim}
+
+assess how the parameters of the similar process are set in comparison
+to the original one, and ``splitNorm=true'' means to output specific
+trees for these ``theoretical'' counts (in \texttt{\_norm.dnd} trees).
+
+Here \texttt{zz=1} has no meaning, just to use the same process as the
+original. But, it could have been:
+
+\begin{verbatim}
+  nullProcessParams = HKY85.theta_1=0.5
+\end{verbatim}
+
+to set a model with no tendency towards AT vs GC.
 
 \subsubsection*{Counting per site}
 
